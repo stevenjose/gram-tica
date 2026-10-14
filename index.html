@@ -12,7 +12,8 @@
             --secondary: #ec4899;
             --accent: #0ea5e9;
             --success: #22c55e;
-            --bg-gradient: linear-gradient(135deg, #0f172a 1e1b4b, #312e81);
+            --warning: #f59e0b;
+            --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,11 +64,10 @@
             padding: 20px;
             margin-bottom: 20px;
             border-left: 6px solid var(--primary);
-            position: relative;
         }
 
         .rule-card.plural { border-left-color: var(--secondary); }
-        .rule-card.negative { border-left-color: var(--warning, #f59e0b); }
+        .rule-card.negative { border-left-color: var(--warning); }
 
         .rule-title {
             font-size: 1.3rem;
@@ -95,7 +95,7 @@
         .example-box span.en { color: #38bdf8; font-weight: 600; }
         .example-box span.es { color: #94a3b8; display: block; font-size: 0.88rem; }
 
-        /* --- LABORATORIO DE PRÁCTICA RÁPIDA --- */
+        /* --- LABORATORIO DE PRÁCTICA ALEATORIA --- */
         .lab-section {
             background: rgba(14, 165, 233, 0.1);
             border: 2px dashed var(--accent);
@@ -105,18 +105,32 @@
             margin-top: 30px;
         }
 
+        .lab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
         .lab-section h3 {
             color: #38bdf8;
-            margin-bottom: 15px;
             font-size: 1.4rem;
         }
 
+        .score-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
         .challenge-box {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.85);
             border-radius: 14px;
-            padding: 15px;
+            padding: 18px;
             margin-bottom: 15px;
             font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .options-grid {
@@ -213,9 +227,12 @@
             </div>
         </div>
 
-        <!-- MINI LABORATORIO INTERACTIVO -->
+        <!-- LABORATORIO DE PRÁCTICA ALEATORIA (12 PREGUNTAS) -->
         <div class="lab-section">
-            <h3>🤖 Miniprueba del Robot</h3>
+            <div class="lab-header">
+                <h3>🤖 Desafío Aleatorio del Robot</h3>
+                <div class="score-badge">⭐ Aciertos: <span id="lab-score">0</span></div>
+            </div>
             <div class="challenge-box" id="challenge-text">
                 Cargando reto...
             </div>
@@ -231,8 +248,8 @@
     </div>
 
     <script>
-        // Minipruebas rápidas para practicar singular vs plural
-        const challenges = [
+        // Banco ampliado con 12 preguntas sobre Singular, Plural y Negativas
+        const questionBank = [
             {
                 q: "Elige la opción correcta para: '___ a long tail' (hablando de 1 mono)",
                 options: ["It has got", "They have got"],
@@ -250,14 +267,84 @@
                 options: ["hasn't", "haven't"],
                 correct: 1,
                 hint: "¡'Snakes' es plural! Por eso va con haven't."
+            },
+            {
+                q: "Elige la opción correcta para: '___ big ears' (hablando de 1 elefante)",
+                options: ["It has got", "They have got"],
+                correct: 0,
+                hint: "'An elephant' es singular, va con It has got."
+            },
+            {
+                q: "Elige la opción correcta para: '___ four legs' (hablando de un perro)",
+                options: ["It has got", "They have got"],
+                correct: 0,
+                hint: "Un solo perro ('a dog') usa It has got."
+            },
+            {
+                q: "Elige la opción correcta para: '___ orange and black' (hablando de varios tigres)",
+                options: ["It is", "They are"],
+                correct: 1,
+                hint: "'Tigers' lleva 's', es plural, por lo tanto es They are."
+            },
+            {
+                q: "Completa la frase negativa: 'A crocodile ___ got wings'",
+                options: ["hasn't", "haven't"],
+                correct: 0,
+                hint: "Un cocodrilo ('a crocodile') es singular, se niega con hasn't."
+            },
+            {
+                q: "Completa la frase: 'Monks are funny, ___ can climb trees'",
+                options: ["it", "they"],
+                correct: 1,
+                hint: "Como 'Monkeys' está en plural, el pronombre para continuar es 'They'."
+            },
+            {
+                q: "Elige la opción correcta: '___ small and green' (hablando de 1 rana)",
+                options: ["It is", "They are"],
+                correct: 0,
+                hint: "Una rana ('a frog') es singular: It is."
+            },
+            {
+                q: "Completa la negativa plural: 'Parrots ___ got big teeth'",
+                options: ["hasn't", "haven't"],
+                correct: 1,
+                hint: "Loros ('Parrots') es plural, se usa haven't."
+            },
+            {
+                q: "Elige la opción correcta para: '___ sharp teeth' (hablando de tiburones)",
+                options: ["It has got", "They have got"],
+                correct: 1,
+                hint: "Tiburones ('sharks') es plural: They have got."
+            },
+            {
+                q: "Completa la frase: 'A snake can't walk because ___ got legs'",
+                options: ["it hasn't", "they haven't"],
+                correct: 0,
+                hint: "Hablamos de 'A snake' (singular), por lo tanto es 'it hasn't'."
             }
         ];
 
-        let currentCh = 0;
+        let labScore = 0;
+        let currentPool = [];
 
-        function loadChallenge() {
-            if(currentCh >= challenges.length) currentCh = 0;
-            const ch = challenges[currentCh];
+        // Barajar array de forma aleatoria
+        function shuffleArray(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function loadRandomChallenge() {
+            // Si el depósito está vacío, volvemos a rellenarlo y barajarlo
+            if (currentPool.length === 0) {
+                currentPool = shuffleArray([...questionBank]);
+            }
+
+            const ch = currentPool.pop(); // Sacar una pregunta al azar
             document.getElementById('challenge-text').textContent = ch.q;
             document.getElementById('lab-feedback').textContent = "";
             
@@ -276,19 +363,25 @@
         function checkLabAnswer(selected, correct, hint) {
             const fb = document.getElementById('lab-feedback');
             if(selected === correct) {
+                labScore += 10;
+                document.getElementById('lab-score').textContent = labScore;
                 fb.style.color = "#4ade80";
-                fb.textContent = "🎉 ¡Perfecto! Lo has entendido a la primera.";
+                fb.textContent = "🎉 ¡Perfecto! Siguiente reto en un momento...";
+                
+                // Desactivar botones momentáneamente para evitar doble clic
+                document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+
                 setTimeout(() => {
-                    currentCh++;
-                    loadChallenge();
-                }, 2000);
+                    loadRandomChallenge();
+                }, 1500);
             } else {
                 fb.style.color = "#f87171";
                 fb.textContent = `❌ Casi. Pista: ${hint}`;
             }
         }
 
-        loadChallenge();
+        // Iniciar el laboratorio cargando la primera pregunta aleatoria
+        loadRandomChallenge();
     </script>
 </body>
 </html>
