@@ -67,6 +67,7 @@
         }
 
         .rule-card.plural { border-left-color: var(--secondary); }
+        .rule-card.pronoun { border-left-color: #38bdf8; }
         .rule-card.negative { border-left-color: var(--warning); }
 
         .rule-title {
@@ -183,17 +184,17 @@
     <div class="guide-wrapper">
         <div class="header-title">
             <h1>🔬 Grammar Lab: Singular vs Plural</h1>
-            <p>Guía definitiva para dominar <strong>It is</strong>, <strong>They are</strong> y las negativas.</p>
+            <p>Guía definitiva para dominar <strong>It</strong>, <strong>They</strong> y sus formas verbales.</p>
         </div>
 
         <!-- REGLA 1: SINGULAR -->
         <div class="rule-card">
             <div class="rule-title">🟢 1. Hablar de UNA sola cosa o animal (Singular)</div>
             <div class="rule-content">
-                Cuando el nombre va en singular (empieza por <strong>a</strong> o <strong>an</strong>, ej: <em>a crocodile, an elephant</em>), usamos siempre <strong>It is</strong> (para cómo es) o <strong>It has got</strong> (para lo que tiene).
+                Cuando hablamos de un solo animal u objeto (empieza por <strong>a</strong> o <strong>an</strong>, ej: <em>a crocodile</em>), usamos <strong>It is</strong>, <strong>It has got</strong> o simplemente el pronombre <strong>It</strong>.
                 <div class="example-box">
-                    <span class="en">👉 "It is big." / "It has got big teeth."</span>
-                    <span class="es">(Él/Eso es grande. / Tiene dientes grandes — refiriéndose a 1 cocodrilo).</span>
+                    <span class="en">👉 "A crocodile is big. It has got sharp teeth."</span>
+                    <span class="es">(Un cocodrilo es grande. Él/Eso tiene dientes afilados — 'It' sustituye al cocodrilo singular).</span>
                 </div>
             </div>
         </div>
@@ -202,32 +203,43 @@
         <div class="rule-card plural">
             <div class="rule-title">🟣 2. Hablar de DOS o más cosas (Plural con 's')</div>
             <div class="rule-content">
-                Cuando el animal o objeto lleva una <strong>'s'</strong> al final (ej: <em>crocodiles, elephants, wings</em>), ya no podemos usar "It". Cambiamos automáticamente a <strong>They are</strong> (Ellos/Ellas son) o <strong>They have got</strong> (Ellos tienen).
+                Cuando el sujeto lleva una <strong>'s'</strong> al final (ej: <em>crocodiles, monkeys, wings</em>), usamos <strong>They are</strong> o <strong>They have got</strong>.
                 <div class="example-box">
-                    <span class="en">👉 "They are green." / "They have got big teeth."</span>
-                    <span class="es">(Ellos son verdes. / Tienen dientes grandes — refiriéndose a varios cocodrilos).</span>
+                    <span class="en">👉 "Crocodiles are green. They have got big teeth."</span>
+                    <span class="es">(Los cocodrilos son verdes. Ellos tienen dientes grandes).</span>
                 </div>
             </div>
         </div>
 
-        <!-- REGLA 3: NEGATIVAS -->
-        <div class="rule-card negative">
-            <div class="rule-title">🔴 3. Las Trampas Negativas (Isn't / Aren't / Hasn't)</div>
+        <!-- REGLA 3: EL PRONOMBRE "THEY" SOLO -->
+        <div class="rule-card pronoun">
+            <div class="rule-title">🔵 3. ¿Cuándo se usa solo "They" (sin "are")?</div>
             <div class="rule-content">
-                El secreto para no fallar en los exámenes es mirar si hay plural o singular:
+                A veces la frase ya nos dice quiénes son al principio y solo tenemos que elegir qué acción hacen (como volar, saltar o trepar). En ese caso usamos directamente el pronombre <strong>They</strong> (Ellos/Ellas).
+                <div class="example-box">
+                    <span class="en">👉 "Monkeys are funny. They can climb trees."</span>
+                    <span class="es">(Los monos son divertidos. [Ellos] pueden trepar árboles — no decimos "They are can", sino solo "They").</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGLA 4: NEGATIVAS -->
+        <div class="rule-card negative">
+            <div class="rule-title">🔴 4. Las Trampas Negativas (Isn't / Aren't / Hasn't / Haven't)</div>
+            <div class="rule-content">
+                Fíjate siempre si el sujeto es uno o varios para elegir la negación correcta:
                 <ul style="margin-left: 20px; margin-top: 8px; line-height: 1.5;">
-                    <li>Singular negativo: <strong>It isn't</strong> (no es) / <strong>It hasn't got</strong> (no tiene).</li>
-                    <li>Plural negativo: <strong>They aren't</strong> (no son) / <strong>They haven't got</strong> (no tienen).</li>
-                    <li>Habilidades: <strong>Can</strong> (sabe/puede) / <strong>Can't</strong> (no sabe/no puede, sirve igual para singular y plural).</li>
+                    <li>Singular negativo: <strong>It isn't</strong> / <strong>It hasn't got</strong>.</li>
+                    <li>Plural negativo: <strong>They aren't</strong> / <strong>They haven't got</strong>.</li>
                 </ul>
                 <div class="example-box">
-                    <span class="en">👉 "A snake hasn't got legs." vs "Snakes haven't got legs."</span>
-                    <span class="es">(Una serpiente no tiene patas vs Las serpientes no tienen patas).</span>
+                    <span class="en">👉 "Snakes are long. They haven't got legs."</span>
+                    <span class="es">(Las serpientes son largas. Ellas no tienen patas).</span>
                 </div>
             </div>
         </div>
 
-        <!-- LABORATORIO DE PRÁCTICA ALEATORIA (12 PREGUNTAS) -->
+        <!-- LABORATORIO DE PRÁCTICA ALEATORIA (12 PREGUNTAS CLARAS) -->
         <div class="lab-section">
             <div class="lab-header">
                 <h3>🤖 Desafío Aleatorio del Robot</h3>
@@ -248,86 +260,85 @@
     </div>
 
     <script>
-        // Banco ampliado con 12 preguntas sobre Singular, Plural y Negativas
+        // Banco corregido con frases completas y sin ambigüedades
         const questionBank = [
             {
-                q: "Elige la opción correcta para: '___ a long tail' (hablando de 1 mono)",
-                options: ["It has got", "They have got"],
+                q: "Completa para 1 solo mono: 'A monkey is funny. ___ has got a long tail.'",
+                options: ["It", "They"],
                 correct: 0,
-                hint: "¡Es singular ('a monkey'), así que se usa It!"
+                hint: "Hablamos de 'A monkey' (singular), así que usamos el pronombre 'It'."
             },
             {
-                q: "Elige la opción correcta para: '___ green and big' (hablando de varios cocodrilos)",
+                q: "Completa para varios cocodrilos: 'Crocodiles are green. ___ have got sharp teeth.'",
+                options: ["It", "They"],
+                correct: 1,
+                hint: "'Crocodiles' es plural, por lo tanto usamos 'They'."
+            },
+            {
+                q: "Completa la frase negativa en plural: 'Snakes are long. ___ haven't got legs.'",
+                options: ["It", "They"],
+                correct: 1,
+                hint: "Como 'Snakes' lleva 's' (plural), corresponde 'They'."
+            },
+            {
+                q: "Elige la forma correcta para un elefante: 'An elephant is huge. ___ has got big ears.'",
+                options: ["It", "They"],
+                correct: 0,
+                hint: "'An elephant' es uno solo (singular), se usa 'It'."
+            },
+            {
+                q: "Elige la opción correcta para describir a varios tigres: 'Tigers are fast. ___ are orange and black.'",
                 options: ["It is", "They are"],
                 correct: 1,
-                hint: "¡Lleva 's' ('crocodiles'), es plural, así que usamos They!"
+                hint: "Hablamos de 'Tigers' (plural), usamos 'They are'."
             },
             {
-                q: "Completa la frase negativa: 'Snakes ___ got legs'",
-                options: ["hasn't", "haven't"],
+                q: "Completa la frase de habilidad en plural: 'Monkeys can climb trees. ___ can jump too.'",
+                options: ["It", "They"],
                 correct: 1,
-                hint: "¡'Snakes' es plural! Por eso va con haven't."
+                hint: "Para varios monos ('Monkeys') usamos el pronombre plural 'They'."
             },
             {
-                q: "Elige la opción correcta para: '___ big ears' (hablando de 1 elefante)",
-                options: ["It has got", "They have got"],
+                q: "Completa la frase negativa singular: 'A crocodile is big. ___ hasn't got wings.'",
+                options: ["It", "They"],
                 correct: 0,
-                hint: "'An elephant' es singular, va con It has got."
+                hint: "'A crocodile' es singular, se niega con 'It hasn't'."
             },
             {
-                q: "Elige la opción correcta para: '___ four legs' (hablando de un perro)",
-                options: ["It has got", "They have got"],
+                q: "Elige la opción correcta para una rana: 'A frog is small. ___ can jump.'",
+                options: ["It", "They"],
                 correct: 0,
-                hint: "Un solo perro ('a dog') usa It has got."
+                hint: "Una sola rana ('A frog') usa 'It'."
             },
             {
-                q: "Elige la opción correcta para: '___ orange and black' (hablando de varios tigres)",
-                options: ["It is", "They are"],
+                q: "Completa para varios loros: 'Parrots are colorful. ___ can fly.'",
+                options: ["It", "They"],
                 correct: 1,
-                hint: "'Tigers' lleva 's', es plural, por lo tanto es They are."
+                hint: "'Parrots' es plural, por eso va con 'They'."
             },
             {
-                q: "Completa la frase negativa: 'A crocodile ___ got wings'",
-                options: ["hasn't", "haven't"],
-                correct: 0,
-                hint: "Un cocodrilo ('a crocodile') es singular, se niega con hasn't."
-            },
-            {
-                q: "Completa la frase: 'Monks are funny, ___ can climb trees'",
-                options: ["it", "they"],
+                q: "Completa la frase negativa plural: 'Elephants are heavy. ___ haven't got wings.'",
+                options: ["It hasn't", "They haven't"],
                 correct: 1,
-                hint: "Como 'Monkeys' está en plural, el pronombre para continuar es 'They'."
+                hint: "'Elephants' es plural, la negación correcta es 'They haven't'."
             },
             {
-                q: "Elige la opción correcta: '___ small and green' (hablando de 1 rana)",
-                options: ["It is", "They are"],
-                correct: 0,
-                hint: "Una rana ('a frog') es singular: It is."
-            },
-            {
-                q: "Completa la negativa plural: 'Parrots ___ got big teeth'",
-                options: ["hasn't", "haven't"],
+                q: "Elige la opción correcta para tiburones: 'Sharks live in the sea. ___ have got sharp teeth.'",
+                options: ["It", "They"],
                 correct: 1,
-                hint: "Loros ('Parrots') es plural, se usa haven't."
+                hint: "'Sharks' (tiburones) está en plural, le corresponde 'They'."
             },
             {
-                q: "Elige la opción correcta para: '___ sharp teeth' (hablando de tiburones)",
-                options: ["It has got", "They have got"],
-                correct: 1,
-                hint: "Tiburones ('sharks') es plural: They have got."
-            },
-            {
-                q: "Completa la frase: 'A snake can't walk because ___ got legs'",
-                options: ["it hasn't", "they haven't"],
+                q: "Completa la frase singular: 'A snake is thin. ___ is long.'",
+                options: ["It", "They"],
                 correct: 0,
-                hint: "Hablamos de 'A snake' (singular), por lo tanto es 'it hasn't'."
+                hint: "Una serpiente ('A snake') es singular, se usa 'It'."
             }
         ];
 
         let labScore = 0;
         let currentPool = [];
 
-        // Barajar array de forma aleatoria
         function shuffleArray(array) {
             let currentIndex = array.length, randomIndex;
             while (currentIndex !== 0) {
@@ -339,12 +350,11 @@
         }
 
         function loadRandomChallenge() {
-            // Si el depósito está vacío, volvemos a rellenarlo y barajarlo
             if (currentPool.length === 0) {
                 currentPool = shuffleArray([...questionBank]);
             }
 
-            const ch = currentPool.pop(); // Sacar una pregunta al azar
+            const ch = currentPool.pop();
             document.getElementById('challenge-text').textContent = ch.q;
             document.getElementById('lab-feedback').textContent = "";
             
@@ -368,7 +378,6 @@
                 fb.style.color = "#4ade80";
                 fb.textContent = "🎉 ¡Perfecto! Siguiente reto en un momento...";
                 
-                // Desactivar botones momentáneamente para evitar doble clic
                 document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
 
                 setTimeout(() => {
@@ -380,7 +389,6 @@
             }
         }
 
-        // Iniciar el laboratorio cargando la primera pregunta aleatoria
         loadRandomChallenge();
     </script>
 </body>
