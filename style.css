@@ -1,0 +1,212 @@
+:root {
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --accent: #0ea5e9;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background: var(--bg-gradient);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.guide-wrapper {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.header-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.version-badge {
+    display: inline-block;
+    background: rgba(14, 165, 233, 0.15);
+    border: 1px solid #0ea5e9;
+    color: #38bdf8;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.header-title h1 {
+    font-size: 2rem;
+    color: #38bdf8;
+    margin-bottom: 5px;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.header-title p {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+/* --- TARJETAS EXPLICATIVAS --- */
+.rule-card {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 6px solid var(--primary);
+}
+
+.rule-card.plural { border-left-color: var(--secondary); }
+.rule-card.pronoun { border-left-color: #38bdf8; }
+.rule-card.negative { border-left-color: var(--warning); }
+
+.rule-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rule-content {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.rule-content ul {
+    margin-left: 20px;
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+.example-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.example-box span.en { color: #38bdf8; font-weight: 600; }
+.example-box span.es { color: #94a3b8; display: block; font-size: 0.88rem; }
+
+/* --- MINI EXAMEN / LABORATORIO --- */
+.lab-section {
+    background: rgba(14, 165, 233, 0.1);
+    border: 2px dashed var(--accent);
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.lab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.lab-section h3 {
+    color: #38bdf8;
+    font-size: 1.4rem;
+}
+
+.score-badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+}
+
+.challenge-box {
+    background: rgba(15, 23, 42, 0.85);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 480px) {
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.opt-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 10px;
+    border-radius: 12px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.opt-btn:hover:not(:disabled) {
+    background: var(--primary);
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+.opt-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.lab-feedback {
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-height: 28px;
+}
+
+.nav-container {
+    text-align: center;
+}
+
+.btn-nav {
+    display: inline-block;
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

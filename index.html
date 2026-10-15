@@ -1,395 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grammar Lab - Guía It is vs They are</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --secondary: #ec4899;
-            --accent: #0ea5e9;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Fredoka', sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e1b4b);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .guide-wrapper {
-            width: 100%;
-            max-width: 700px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 25px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .header-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .header-title h1 {
-            font-size: 2rem;
-            color: #38bdf8;
-            margin-bottom: 5px;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        }
-
-        .header-title p {
-            color: #94a3b8;
-            font-size: 1rem;
-        }
-
-        /* --- SECCIÓN DE TARJETAS EXPLICATIVAS --- */
-        .rule-card {
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 18px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 6px solid var(--primary);
-        }
-
-        .rule-card.plural { border-left-color: var(--secondary); }
-        .rule-card.pronoun { border-left-color: #38bdf8; }
-        .rule-card.negative { border-left-color: var(--warning); }
-
-        .rule-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .rule-content {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #e2e8f0;
-        }
-
-        .example-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 10px 15px;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            border: 1px dashed rgba(255,255,255,0.2);
-        }
-
-        .example-box span.en { color: #38bdf8; font-weight: 600; }
-        .example-box span.es { color: #94a3b8; display: block; font-size: 0.88rem; }
-
-        /* --- LABORATORIO DE PRÁCTICA ALEATORIA --- */
-        .lab-section {
-            background: rgba(14, 165, 233, 0.1);
-            border: 2px dashed var(--accent);
-            border-radius: 18px;
-            padding: 20px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .lab-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .lab-section h3 {
-            color: #38bdf8;
-            font-size: 1.4rem;
-        }
-
-        .score-badge {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.95rem;
-        }
-
-        .challenge-box {
-            background: rgba(15, 23, 42, 0.85);
-            border-radius: 14px;
-            padding: 18px;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .opt-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 12px;
-            border-radius: 12px;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .opt-btn:hover {
-            background: var(--primary);
-            border-color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .lab-feedback {
-            font-size: 1.1rem;
-            font-weight: 600;
-            min-height: 25px;
-        }
-
-        .btn-nav {
-            display: inline-block;
-            margin-top: 25px;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .btn-nav:hover { background: rgba(255,255,255,0.2); }
-    </style>
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Grammar Lab - Guía It is vs They are</title>
+    <!-- Fuentes e Iconos -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="guide-wrapper">
-        <div class="header-title">
-            <h1>🔬 Grammar Lab: Singular vs Plural</h1>
-            <p>Guía definitiva para dominar <strong>It</strong>, <strong>They</strong> y sus formas verbales.</p>
+      <div class="header-title">
+        <div class="version-badge">
+          🚀 <span id="version-badge-text">v--</span>
         </div>
+        <h1>🔬 Grammar Lab: Singular vs Plural</h1>
+        <p>
+          Guía definitiva para dominar <strong>It</strong>,
+          <strong>They</strong> y sus formas verbales.
+        </p>
+      </div>
 
-        <!-- REGLA 1: SINGULAR -->
-        <div class="rule-card">
-            <div class="rule-title">🟢 1. Hablar de UNA sola cosa o animal (Singular)</div>
-            <div class="rule-content">
-                Cuando hablamos de un solo animal u objeto (empieza por <strong>a</strong> o <strong>an</strong>, ej: <em>a crocodile</em>), usamos <strong>It is</strong>, <strong>It has got</strong> o simplemente el pronombre <strong>It</strong>.
-                <div class="example-box">
-                    <span class="en">👉 "A crocodile is big. It has got sharp teeth."</span>
-                    <span class="es">(Un cocodrilo es grande. Él/Eso tiene dientes afilados — 'It' sustituye al cocodrilo singular).</span>
-                </div>
-            </div>
+      <!-- REGLA 1: SINGULAR -->
+      <div class="rule-card">
+        <div class="rule-title">
+          🟢 1. Hablar de UNA sola cosa o animal (Singular)
         </div>
+        <div class="rule-content">
+          Cuando hablamos de un solo animal u objeto (ej:
+          <em>a crocodile, an elephant</em>):
+          <ul>
+            <li>
+              Para describir cómo es ➔ <strong>It is</strong> (o
+              <strong>It isn't</strong>).
+            </li>
+            <li>
+              Para partes del cuerpo que tiene ➔ <strong>It has got</strong> (o
+              <strong>It hasn't got</strong>).
+            </li>
+          </ul>
+          <div class="example-box">
+            <span class="en"
+              >👉 "A crocodile is big. It has got sharp teeth."</span
+            >
+            <span class="es"
+              >(Un cocodrilo es grande. [Él] tiene dientes afilados).</span
+            >
+          </div>
+        </div>
+      </div>
 
-        <!-- REGLA 2: PLURAL -->
-        <div class="rule-card plural">
-            <div class="rule-title">🟣 2. Hablar de DOS o más cosas (Plural con 's')</div>
-            <div class="rule-content">
-                Cuando el sujeto lleva una <strong>'s'</strong> al final (ej: <em>crocodiles, monkeys, wings</em>), usamos <strong>They are</strong> o <strong>They have got</strong>.
-                <div class="example-box">
-                    <span class="en">👉 "Crocodiles are green. They have got big teeth."</span>
-                    <span class="es">(Los cocodrilos son verdes. Ellos tienen dientes grandes).</span>
-                </div>
-            </div>
+      <!-- REGLA 2: PLURAL -->
+      <div class="rule-card plural">
+        <div class="rule-title">🟣 2. Hablar de DOS o más cosas (Plural)</div>
+        <div class="rule-content">
+          Cuando el sujeto lleva <strong>'s'</strong> al final (ej:
+          <em>crocodiles, monkeys, wings</em>):
+          <ul>
+            <li>
+              Para describir cómo son ➔ <strong>They are</strong> (o
+              <strong>They aren't</strong>).
+            </li>
+            <li>
+              Para partes del cuerpo que tienen ➔
+              <strong>They have got</strong> (o
+              <strong>They haven't got</strong>).
+            </li>
+          </ul>
+          <div class="example-box">
+            <span class="en"
+              >👉 "Crocodiles are green. They have got sharp teeth."</span
+            >
+            <span class="es"
+              >(Los cocodrilos son verdes. Ellos tienen dientes afilados).</span
+            >
+          </div>
         </div>
+      </div>
 
-        <!-- REGLA 3: EL PRONOMBRE "THEY" SOLO -->
-        <div class="rule-card pronoun">
-            <div class="rule-title">🔵 3. ¿Cuándo se usa solo "They" (sin "are")?</div>
-            <div class="rule-content">
-                A veces la frase ya nos dice quiénes son al principio y solo tenemos que elegir qué acción hacen (como volar, saltar o trepar). En ese caso usamos directamente el pronombre <strong>They</strong> (Ellos/Ellas).
-                <div class="example-box">
-                    <span class="en">👉 "Monkeys are funny. They can climb trees."</span>
-                    <span class="es">(Los monos son divertidos. [Ellos] pueden trepar árboles — no decimos "They are can", sino solo "They").</span>
-                </div>
-            </div>
+      <!-- REGLA 3: THEY ARE VS SOLO THEY -->
+      <div class="rule-card pronoun">
+        <div class="rule-title">
+          🔵 3. ¿Cuándo usar "They are" y cuándo solo "They"?
         </div>
+        <div class="rule-content">
+          Fíjate en lo que viene justo después del hueco:
+          <ul>
+            <li>
+              Si describes cómo son (adjetivos como <em>big, orange, fast</em>)
+              ➔ <strong>They are</strong>.
+            </li>
+            <li>
+              Si van seguidos de un verbo de acción o posesión (como
+              <em>can jump, have got</em>) ➔ Solo el pronombre
+              <strong>They</strong> (nunca digas *"They are can"*).
+            </li>
+          </ul>
+          <div class="example-box">
+            <span class="en"
+              >👉 "Tigers are fast. <u>They are</u> orange." VS "Tigers are
+              fast. <u>They</u> can run."</span
+            >
+          </div>
+        </div>
+      </div>
 
-        <!-- REGLA 4: NEGATIVAS -->
-        <div class="rule-card negative">
-            <div class="rule-title">🔴 4. Las Trampas Negativas (Isn't / Aren't / Hasn't / Haven't)</div>
-            <div class="rule-content">
-                Fíjate siempre si el sujeto es uno o varios para elegir la negación correcta:
-                <ul style="margin-left: 20px; margin-top: 8px; line-height: 1.5;">
-                    <li>Singular negativo: <strong>It isn't</strong> / <strong>It hasn't got</strong>.</li>
-                    <li>Plural negativo: <strong>They aren't</strong> / <strong>They haven't got</strong>.</li>
-                </ul>
-                <div class="example-box">
-                    <span class="en">👉 "Snakes are long. They haven't got legs."</span>
-                    <span class="es">(Las serpientes son largas. Ellas no tienen patas).</span>
-                </div>
-            </div>
+      <!-- REGLA 4: NEGATIVAS -->
+      <div class="rule-card negative">
+        <div class="rule-title">🔴 4. Las Formas Negativas</div>
+        <div class="rule-content">
+          <ul>
+            <li>
+              Singular: <strong>isn't</strong> (no es) /
+              <strong>hasn't got</strong> (no tiene).
+            </li>
+            <li>
+              Plural: <strong>aren't</strong> (no son) /
+              <strong>haven't got</strong> (no tienen).
+            </li>
+            <li>
+              Acción (singular y plural): <strong>can't</strong> (no puede).
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <!-- LABORATORIO DE PRÁCTICA ALEATORIA (12 PREGUNTAS CLARAS) -->
-        <div class="lab-section">
-            <div class="lab-header">
-                <h3>🤖 Desafío Aleatorio del Robot</h3>
-                <div class="score-badge">⭐ Aciertos: <span id="lab-score">0</span></div>
-            </div>
-            <div class="challenge-box" id="challenge-text">
-                Cargando reto...
-            </div>
-            <div class="options-grid" id="options-container">
-                <!-- Opciones dinámicas -->
-            </div>
-            <div class="lab-feedback" id="lab-feedback"></div>
+      <!-- MINI EXAMEN INTERACTIVO -->
+      <div class="lab-section">
+        <div class="lab-header">
+          <h3>🤖 Mini-Examen Aleatorio</h3>
+          <div class="score-badge">
+            ⭐ Aciertos: <span id="lab-score">0</span>
+          </div>
         </div>
+        <div class="challenge-box" id="challenge-text">
+          Cargando pregunta...
+        </div>
+        <div class="options-grid" id="options-container">
+          <!-- 4 opciones generadas dinámicamente -->
+        </div>
+        <div class="lab-feedback" id="lab-feedback"></div>
+      </div>
 
-        <div style="text-align: center;">
-            <a href="index.html" class="btn-nav">⬅️ Volver al Juego Principal</a>
-        </div>
+      <div class="nav-container">
+        <a href="https://stevenjose.github.io/3ro-primaria/" class="btn-nav"
+          >⬅️ Volver al Portal Principal</a
+        >
+      </div>
     </div>
 
-    <script>
-        // Banco corregido con frases completas y sin ambigüedades
-        const questionBank = [
-            {
-                q: "Completa para 1 solo mono: 'A monkey is funny. ___ has got a long tail.'",
-                options: ["It", "They"],
-                correct: 0,
-                hint: "Hablamos de 'A monkey' (singular), así que usamos el pronombre 'It'."
-            },
-            {
-                q: "Completa para varios cocodrilos: 'Crocodiles are green. ___ have got sharp teeth.'",
-                options: ["It", "They"],
-                correct: 1,
-                hint: "'Crocodiles' es plural, por lo tanto usamos 'They'."
-            },
-            {
-                q: "Completa la frase negativa en plural: 'Snakes are long. ___ haven't got legs.'",
-                options: ["It", "They"],
-                correct: 1,
-                hint: "Como 'Snakes' lleva 's' (plural), corresponde 'They'."
-            },
-            {
-                q: "Elige la forma correcta para un elefante: 'An elephant is huge. ___ has got big ears.'",
-                options: ["It", "They"],
-                correct: 0,
-                hint: "'An elephant' es uno solo (singular), se usa 'It'."
-            },
-            {
-                q: "Elige la opción correcta para describir a varios tigres: 'Tigers are fast. ___ are orange and black.'",
-                options: ["It is", "They are"],
-                correct: 1,
-                hint: "Hablamos de 'Tigers' (plural), usamos 'They are'."
-            },
-            {
-                q: "Completa la frase de habilidad en plural: 'Monkeys can climb trees. ___ can jump too.'",
-                options: ["It", "They"],
-                correct: 1,
-                hint: "Para varios monos ('Monkeys') usamos el pronombre plural 'They'."
-            },
-            {
-                q: "Completa la frase negativa singular: 'A crocodile is big. ___ hasn't got wings.'",
-                options: ["It", "They"],
-                correct: 0,
-                hint: "'A crocodile' es singular, se niega con 'It hasn't'."
-            },
-            {
-                q: "Elige la opción correcta para una rana: 'A frog is small. ___ can jump.'",
-                options: ["It", "They"],
-                correct: 0,
-                hint: "Una sola rana ('A frog') usa 'It'."
-            },
-            {
-                q: "Completa para varios loros: 'Parrots are colorful. ___ can fly.'",
-                options: ["It", "They"],
-                correct: 1,
-                hint: "'Parrots' es plural, por eso va con 'They'."
-            },
-            {
-                q: "Completa la frase negativa plural: 'Elephants are heavy. ___ haven't got wings.'",
-                options: ["It hasn't", "They haven't"],
-                correct: 1,
-                hint: "'Elephants' es plural, la negación correcta es 'They haven't'."
-            },
-            {
-                q: "Elige la opción correcta para tiburones: 'Sharks live in the sea. ___ have got sharp teeth.'",
-                options: ["It", "They"],
-                correct: 1,
-                hint: "'Sharks' (tiburones) está en plural, le corresponde 'They'."
-            },
-            {
-                q: "Completa la frase singular: 'A snake is thin. ___ is long.'",
-                options: ["It", "They"],
-                correct: 0,
-                hint: "Una serpiente ('A snake') es singular, se usa 'It'."
-            }
-        ];
-
-        let labScore = 0;
-        let currentPool = [];
-
-        function shuffleArray(array) {
-            let currentIndex = array.length, randomIndex;
-            while (currentIndex !== 0) {
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-            }
-            return array;
-        }
-
-        function loadRandomChallenge() {
-            if (currentPool.length === 0) {
-                currentPool = shuffleArray([...questionBank]);
-            }
-
-            const ch = currentPool.pop();
-            document.getElementById('challenge-text').textContent = ch.q;
-            document.getElementById('lab-feedback').textContent = "";
-            
-            const grid = document.getElementById('options-container');
-            grid.innerHTML = "";
-
-            ch.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'opt-btn';
-                btn.textContent = opt;
-                btn.onclick = () => checkLabAnswer(idx, ch.correct, ch.hint);
-                grid.appendChild(btn);
-            });
-        }
-
-        function checkLabAnswer(selected, correct, hint) {
-            const fb = document.getElementById('lab-feedback');
-            if(selected === correct) {
-                labScore += 10;
-                document.getElementById('lab-score').textContent = labScore;
-                fb.style.color = "#4ade80";
-                fb.textContent = "🎉 ¡Perfecto! Siguiente reto en un momento...";
-                
-                document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
-
-                setTimeout(() => {
-                    loadRandomChallenge();
-                }, 1500);
-            } else {
-                fb.style.color = "#f87171";
-                fb.textContent = `❌ Casi. Pista: ${hint}`;
-            }
-        }
-
-        loadRandomChallenge();
-    </script>
-</body>
+    <!-- JS Externo -->
+    <script src="main.js"></script>
+  </body>
 </html>
